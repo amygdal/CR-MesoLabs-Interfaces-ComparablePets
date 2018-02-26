@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Pet {
     protected String name;
     protected int age;
-    protected ArrayList<Pet> pets;
+//    protected ArrayList<Pet> pets;
 
     public Pet(String name, int age) {
         this.name = name;
@@ -27,13 +27,13 @@ public abstract class Pet {
     public void setAge(int age) {
         //this.name = name;
     }
-    public void addPet(Pet thePet) {
-
-    }
-
-    public void removePet(Pet thePet) {
-
-    }
+//    public void addPet(Pet thePet) {
+//
+//    }
+//
+//    public void removePet(Pet thePet) {
+//
+//    }
 
     public String speak() {
         return null;
