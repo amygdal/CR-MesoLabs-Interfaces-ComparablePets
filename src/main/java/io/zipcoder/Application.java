@@ -10,62 +10,63 @@ import java.util.Collections;
 
 public class Application {
 
+    private ArrayList<Pet> pets = new ArrayList<Pet>();
+
     public static void main(String[] args) {
-
-//        Console.print("Hello dear user. How many pets do you have?");
-//        int usersNumOfPets = Console.getInt();
-//        Console.print("Thanks! What kind of pets do you have? Please specify using only the following:");
-//        String petOptions = Arrays.toString(PetTypes.values());
-//        Console.print(petOptions);
-//        String usersKindsOfPets = Console.getString();
-//        PetTypes type = PetTypes.valueOf(usersKindsOfPets);
-//        Console.print("Thanks. You entered that you have " + usersNumOfPets + " pet(s) and that they are " +
-//        type);
-
-
-        ArrayList<Pet> pets = new ArrayList<Pet>();
-
-        Capybara vince = new Capybara("Vince", 2);
-        Capybara jaxson = new Capybara("Jaxon", 2);
-        Capybara addison = new Capybara("Addison", 2);
-        Capybara amy = new Capybara("Amy", 14);
-        Cat frederick = new Cat("Frederick", 3);
-        Cat george = new Cat("George", 3);
-        Cat biscuit = new Cat("Biscuit", 3);
-        Dog cassie = new Dog("Cassie", 12);
-        Dog henry = new Dog("Henry", 12);
-
-
-        pets.add(vince);
-        pets.add(jaxson);
-        pets.add(addison);
-        pets.add(amy);
-        pets.add(frederick);
-        pets.add(biscuit);
-        pets.add(cassie);
-        pets.add(henry);
-
-
-
-        for (Pet pet : pets) {
-            System.out.println(pet.getName());
+        Application application = new Application();
+        Integer numberOfPets = Console.getInt("How many pets do yu own?");
+        for(int i=0;i<numberOfPets;i++) {
+            Pet pet = application.getPetFromUser();
+            application.addPet(pet);
         }
-
-        Collections.sort(pets);
-
-        for (Pet pet : pets) {
-            System.out.println(pet.getName());
-        }
-
-
+        application.printPets();
     }
 
+
+    public void printPets() {
+        for(Pet pet : pets) {
+            System.out.println(pet.toString());
+        }
+    }
+
+    public Pet getPetFromUser() {
+        String petType = Console.getString("What kind of pet do you own?");
+        String petName = Console.getString("What is your pet name?");
+        Integer petAge = Console.getInt("What is your pet age?");
+        return createPet(petType, petName, petAge);
+    }
 
     public Pet createPet(String userInput, String expectedName, Integer expectedAge) {
-        return null;
+        PetTypes type = PetTypes.valueOf(userInput);
+        Pet pet = null;
+
+        switch (type) {
+            case Cat:
+                pet = new Cat(expectedName, expectedAge);
+                break;
+
+            case Dog:
+                pet = new Dog(expectedName, expectedAge);
+                break;
+
+            case Capybara:
+                pet = new Capybara(expectedName, expectedAge);
+                break;
+
+        }
+        return pet;
     }
 
-    public void addPet(Pet pet1) {
+    public void addPet(Pet pet) {
+        pets.add(pet);
+    }
 
+    public Pet[] getPets() {
+        Pet[] petArray = new Pet[pets.size()];
+        for (int i = 0; i < petArray.length; i++) {
+            Pet currentPet = pets.get(i);
+            petArray[i] = currentPet;
+        }
+        return petArray;
     }
 }
