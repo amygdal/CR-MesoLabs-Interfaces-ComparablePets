@@ -61,4 +61,11 @@ public class Application {
     }
 
 
+    public Pet createPet(String userInput, String expectedName, Integer expectedAge) {
+        return null;
+    }
+
+    public void addPet(Pet pet1) {
+
+    }
 }

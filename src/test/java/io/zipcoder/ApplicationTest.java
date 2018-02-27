@@ -26,7 +26,7 @@ public class ApplicationTest {
     Dog henry;
 
     @Before
-    public void setup () {
+    public void setup() {
         pets = new ArrayList<Pet>();
 
         vince = new Capybara("Vince", 2);
@@ -50,9 +50,7 @@ public class ApplicationTest {
     }
 
     @Test
-
-    public void sortByNameTest(){
-
+    public void sortByNameTest() {
         String expected = "[Capybara: Addison\n, Capybara: Amy\n, Cat: Biscuit\n, Dog: Cassie\n, Cat: Frederick\n, Dog:" +
                 " Henry\n, Capybara: Jaxon\n, Capybara: Vince\n]";
 
@@ -78,10 +76,54 @@ public class ApplicationTest {
     }
 
 
+    @Test
+    public void createPetTest() {
+        // Given
+        Application application = new Application();
+        String userInput = "Dog";
+        String expectedName = "PetName";
+        Integer expectedAge = 7;
+
+        // When
+        Pet pet = application.createPet(userInput , expectedName, expectedAge);
+
+        // Then
+        Assert.assertTrue(pet instanceof Dog);
+        Assert.assertEquals(expectedName, pet.getName());
+        Assert.assertEquals(expectedAge, pet.getAge());
+    }
 
 
-    //I can have the test return an array, and check to see if that array matches the test array.
 
+    @Test
+    public void sortPetTest() {
+        // Given
+        Application application = new Application();
+
+        Pet pet1 = new Dog("John", 0);
+        Pet pet2 = new Cat("Zack", 0);
+        Pet pet3 = new Capybara("Alex", 0);
+
+        application.addPet(pet1);
+        application.addPet(pet2);
+        application.addPet(pet3);
+
+        // When
+        Pet[] pets = application.getPets();
+
+        // Then
+        Pet firstPet = pets[0];
+        Pet secondPet = pets[1];
+        Pet thirdPet = pets[2];
+
+        Assert.assertEquals(firstPet, pet3);
+        Assert.assertEquals(secondPet, pet1);
+        Assert.assertEquals(thirdPet, pet2);
+    }
+}
+
+
+//I can have the test return an array, and check to see if that array matches the test array.
 
 
 //    public void sortTest() {
@@ -99,7 +141,7 @@ public class ApplicationTest {
 //
 //            Collections.sort(pets);
 //        //System.out.println(pets);
-    }
+
 
 
 
