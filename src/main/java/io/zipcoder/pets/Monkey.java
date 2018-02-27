@@ -8,7 +8,8 @@ public class Monkey extends Pet {
 
     @Override
     public String speak() {
-        return null;
+
+        return "eehehehhehehe";
     }
 
 }

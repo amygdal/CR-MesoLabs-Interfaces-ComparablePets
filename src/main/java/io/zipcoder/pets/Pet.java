@@ -13,19 +13,21 @@ public abstract class Pet {
     }
 
     public String getName() {
-        return null;
+
+        return name;
     }
 
     public int getAge() {
-        return 0;
+
+        return age;
     }
 
     public void setName(String name) {
-        //this.name = name;
+        this.name = name;
     }
 
     public void setAge(int age) {
-        //this.name = name;
+        this.age = age;
     }
 //    public void addPet(Pet thePet) {
 //

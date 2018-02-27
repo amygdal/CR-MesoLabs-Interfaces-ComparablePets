@@ -14,17 +14,15 @@ public class PetOwner {
 
     }
 
-    public boolean addPet(Pet thePet) {
-    return true;
+    public void addPet(Pet thePet) {
+        pets.add(thePet);
+
     }
 
-    public boolean removePet(Pet thePet) {
+    public void removePet(Pet thePet) {
 
-        return true;
+        pets.remove(thePet);
     }
 
-    public List<Pet> getAPets() {
-        return null;
-    }
 
 }

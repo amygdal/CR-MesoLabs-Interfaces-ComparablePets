@@ -37,6 +37,8 @@ public class DogTest {
 
     @Test
     public void speak() {
-
+        String expected = "Woof";
+        String actual = testDog.speak();
+        Assert.assertEquals(expected, actual);
     }
 }

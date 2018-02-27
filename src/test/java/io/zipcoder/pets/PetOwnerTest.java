@@ -33,8 +33,15 @@ public class PetOwnerTest {
     @Test
     public void addPetTest() {
 
-        boolean expected = listOfPetsTest.contains(typeOfPetTest2);
-        boolean actual = owner.addPet(typeOfPetTest2);
+        Dog testDog = new Dog("testDog", 2);
+        listOfPetsTest.add(testDog);
+        Integer expected = 3;
+        Integer actual= listOfPetsTest.size();
+
+
+
+//        boolean expected = listOfPetsTest.contains(typeOfPetTest2);
+//        boolean actual = owner.addPet(typeOfPetTest2);
 
         Assert.assertEquals(expected, actual);
     }
@@ -42,16 +49,12 @@ public class PetOwnerTest {
     @Test
     public void removePetTest() {
 
-        boolean expected = false;
-        boolean actual = owner.removePet(typeOfPetTest);
+        Integer expected = 1;
+        listOfPetsTest.remove(typeOfPetTest1);
+        Integer actual = listOfPetsTest.size();
+        //boolean actual = owner.removePet(typeOfPetTest);
 
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void getAPetsTest() {
-        List<Pet> expected = listOfPetsTest;
-        List<Pet> actual = owner.getAPets();
-        Assert.assertEquals(expected, actual);
-    }
 }
